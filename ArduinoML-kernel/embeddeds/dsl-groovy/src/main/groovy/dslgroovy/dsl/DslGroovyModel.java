@@ -23,9 +23,13 @@ public class DslGroovyModel {
     private Binding binding;
 
     public DslGroovyModel(Binding binding) {
-        this.bricks = new ArrayList<Brick>();
-        this.states = new ArrayList<State>();
+        this.bricks = new ArrayList<>();
+        this.states = new ArrayList<>();
         this.binding = binding;
+    }
+
+    public void setFrequency(double frequency) {
+        this.binding.setVariable("frequency", frequency);
     }
 
     public void createSensor(String name, Integer pinNumber) {
@@ -49,6 +53,14 @@ public class DslGroovyModel {
         State state = new State();
         state.setName(name);
         state.setActions(actions);
+
+        if (this.binding.hasVariable("frequency")) {
+            double frequency = (double) this.binding.getVariable("frequency");
+
+            if (frequency > 0)
+                state.setDebounce(1 / frequency * 1000);
+        }
+
         this.states.add(state);
         this.binding.setVariable(name, state);
     }
@@ -58,7 +70,7 @@ public class DslGroovyModel {
         transition.setNext(to);
         transition.setSensor(sensor);
         transition.setValue(value);
-        from.setTransition(transition);
+        from.addTransition(transition);
     }
 
     public void setInitialState(State state) {

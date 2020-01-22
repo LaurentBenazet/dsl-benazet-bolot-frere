@@ -9,9 +9,10 @@ import java.util.List;
 
 public class State implements NamedElement, Visitable {
 
+	private double debounce = 200;
 	private String name;
-	private List<Action> actions = new ArrayList<Action>();
-	private Transition transition;
+	private List<Action> actions = new ArrayList<>();
+	private List<Transition> transitions = new ArrayList<>();
 
 	@Override
 	public String getName() {
@@ -23,6 +24,14 @@ public class State implements NamedElement, Visitable {
 		this.name = name;
 	}
 
+	public long getDebounce() {
+		return Math.round(debounce);
+	}
+
+	public void setDebounce(double debounce) {
+		this.debounce = debounce;
+	}
+
 	public List<Action> getActions() {
 		return actions;
 	}
@@ -31,12 +40,12 @@ public class State implements NamedElement, Visitable {
 		this.actions = actions;
 	}
 
-	public Transition getTransition() {
-		return transition;
+	public List<Transition> getTransitions() {
+		return transitions;
 	}
 
-	public void setTransition(Transition transition) {
-		this.transition = transition;
+	public void addTransition(Transition transition) {
+		this.transitions.add(transition);
 	}
 
 	@Override

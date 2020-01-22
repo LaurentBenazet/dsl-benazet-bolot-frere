@@ -30,21 +30,21 @@ class DslGroovyDSL {
             methodDefinitionAllowed = true
             //empty white list => forbid imports
             importsWhitelist = [
-                    'java.lang.*'
+                    'java.lang.*', 'java.math.*'
             ]
             staticImportsWhitelist = []
             staticStarImportsWhitelist= []
             //language tokens disallowed
-//			tokensBlacklist= []
+            // tokensBlacklist= []
             //language tokens allowed
             tokensWhitelist= []
             //types allowed to be used  (including primitive types)
             constantTypesClassesWhiteList= [
-                    int, Integer, Number, Integer.TYPE, String, Object
+                    int, double, Integer, Number, Integer.TYPE, String, Object, BigDecimal
             ]
             //classes who are allowed to be receivers of method calls
             receiversClassesWhiteList= [
-                    int, Number, Integer, String, Object
+                    int, double, Number, Integer, String, Object, BigDecimal
             ]
         }
 
