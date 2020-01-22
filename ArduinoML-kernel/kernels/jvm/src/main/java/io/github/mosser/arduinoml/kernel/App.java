@@ -11,8 +11,8 @@ import java.util.List;
 public class App implements NamedElement, Visitable {
 
 	private String name;
-	private List<Brick> bricks = new ArrayList<Brick>();
-	private List<State> states = new ArrayList<State>();
+	private List<Brick> bricks = new ArrayList<>();
+	private List<State> states = new ArrayList<>();
 	private State initial;
 
 	@Override

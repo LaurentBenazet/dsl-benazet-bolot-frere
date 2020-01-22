@@ -34,7 +34,7 @@ public class ToWiring extends Visitor<StringBuffer> {
         }
         w("}\n");
 
-        w("long time = 0; long debounce = 200;\n");
+        w("long time = 0;\n");
 
         for (State state : app.getStates()) {
             state.accept(this);
@@ -65,14 +65,18 @@ public class ToWiring extends Visitor<StringBuffer> {
             action.accept(this);
         }
 
+        w("  long debounce = " + state.getDebounce() + ";");
         w("  boolean guard = millis() - time > debounce;");
+        w("  if(guard) {");
+        w("    time = millis();");
+        w("  }");
         context.put(CURRENT_STATE, state);
 
         for (Transition transition : state.getTransitions()) {
             transition.accept(this);
         }
 
-		w(String.format("  state_%s();", ((State) context.get(CURRENT_STATE)).getName()));
+        w(String.format("  state_%s();", ((State) context.get(CURRENT_STATE)).getName()));
         w("}\n");
     }
 

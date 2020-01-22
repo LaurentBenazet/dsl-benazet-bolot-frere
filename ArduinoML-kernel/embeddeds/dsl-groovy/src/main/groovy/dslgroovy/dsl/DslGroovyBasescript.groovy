@@ -56,6 +56,10 @@ abstract class DslGroovyBasescript extends Script {
         }]
     }
 
+    def frequency(double delay) {
+        ((DslGroovyBinding) this.getBinding()).getModel().setFrequency(delay);
+    }
+
     // export name
     def export(String name) {
         println(((DslGroovyBinding) this.getBinding()).getModel().generateCode(name).toString())
