@@ -58,7 +58,7 @@ public class DslGroovyModel {
         transition.setNext(to);
         transition.setSensor(sensor);
         transition.setValue(value);
-        from.setTransition(transition);
+        from.addTransition(transition);
     }
 
     public void setInitialState(State state) {
