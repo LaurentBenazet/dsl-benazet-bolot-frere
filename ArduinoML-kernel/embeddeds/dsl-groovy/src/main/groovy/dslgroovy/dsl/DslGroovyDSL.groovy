@@ -35,7 +35,7 @@ class DslGroovyDSL {
             staticImportsWhitelist = []
             staticStarImportsWhitelist= []
             //language tokens disallowed
-//			tokensBlacklist= []
+            // tokensBlacklist= []
             //language tokens allowed
             tokensWhitelist= []
             //types allowed to be used  (including primitive types)
