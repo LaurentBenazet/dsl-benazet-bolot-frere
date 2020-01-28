@@ -1,0 +1,44 @@
+// Wiring code generated from an ArduinoML model
+// Application name: Switch!
+
+void setup(){
+  pinMode(12, INPUT);  // button [Sensor]
+  pinMode(11, OUTPUT); // led [Actuator]
+  pinMode(9, OUTPUT); // buzzer [Actuator]
+}
+
+long time = 0;
+
+void state_on() {
+  digitalWrite(11,HIGH);
+  digitalWrite(9,HIGH);
+  long debounce = 200;
+  boolean guard = millis() - time > debounce;
+  if(guard) {
+    time = millis();
+  }
+  if( digitalRead(12) == LOW && guard ) {
+    time = millis();
+    state_off();
+  }
+  state_on();
+}
+
+void state_off() {
+  digitalWrite(11,LOW);
+  digitalWrite(9,LOW);
+  long debounce = 200;
+  boolean guard = millis() - time > debounce;
+  if(guard) {
+    time = millis();
+  }
+  if( digitalRead(12) == HIGH && guard ) {
+    time = millis();
+    state_on();
+  }
+  state_off();
+}
+
+void loop() {
+  state_off();
+}

@@ -32,6 +32,10 @@ public class State implements NamedElement, Visitable {
 		this.debounce = debounce;
 	}
 
+	public void setFrequency(double frequency) {
+		this.debounce = 1 / frequency * 1000;
+	}
+
 	public List<Action> getActions() {
 		return actions;
 	}

@@ -10,7 +10,7 @@ state "on" means "led" becomes "high"
 
 initial "off"
 
-from "off" to "on" when "button" becomes "high"
-from "on" to "off" when "button" becomes "low"
+from "off" to "on" when "button" becomes "high" frequency 0.2
+from "on" to "off" when "button" becomes "low" frequency
 
 export "Switch!"

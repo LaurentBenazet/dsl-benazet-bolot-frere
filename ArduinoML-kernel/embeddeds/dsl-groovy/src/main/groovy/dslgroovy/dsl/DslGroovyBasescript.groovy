@@ -51,6 +51,11 @@ abstract class DslGroovyBasescript extends Script {
                             state2 instanceof String ? (State) ((DslGroovyBinding) this.getBinding()).getVariable(state2) : (State) state2,
                             sensor instanceof String ? (Sensor) ((DslGroovyBinding) this.getBinding()).getVariable(sensor) : (Sensor) sensor,
                             signal instanceof String ? (SIGNAL) ((DslGroovyBinding) this.getBinding()).getVariable(signal) : (SIGNAL) signal)
+
+                    [frequency: { freq ->
+                        State originState = (State) ((DslGroovyBinding) this.getBinding()).getVariable((String) state1)
+                        originState.setFrequency((double) freq)
+                    }]
                 }]
             }]
         }]
