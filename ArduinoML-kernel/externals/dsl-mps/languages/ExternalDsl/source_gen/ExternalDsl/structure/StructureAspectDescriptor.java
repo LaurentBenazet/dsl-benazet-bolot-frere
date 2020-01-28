@@ -94,6 +94,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     b.aggregate("states", 0x2ddcf9c555fc33d8L).target(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x2ddcf9c555fc33d5L).optional(false).ordered(true).multiple(true).origin("3304790852529566680").done();
     b.aggregate("actuators", 0x2ddcf9c555fc33daL).target(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x2ddcf9c555fc33d3L).optional(false).ordered(true).multiple(true).origin("3304790852529566682").done();
+    b.aggregate("sensors", 0x426e08eaa358c04dL).target(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x2ddcf9c555fc33d4L).optional(true).ordered(true).multiple(true).origin("4786773257797288013").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForSensor() {
@@ -102,6 +103,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:ec3db262-98f7-4c13-8509-33adcfc7620a(ExternalDsl.structure)/3304790852529566676");
     b.version(2);
+    b.property("pin", 0x426e08eaa358c051L).type(PrimitiveTypeId.INTEGER).origin("4786773257797288017").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForState() {

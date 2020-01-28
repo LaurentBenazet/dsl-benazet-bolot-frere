@@ -72,6 +72,11 @@
     <node concept="PrWs8" id="2RsYsllZ3f_" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
+    <node concept="1TJgyi" id="49I2eEzmc1h" role="1TKVEl">
+      <property role="IQ2nx" value="4786773257797288017" />
+      <property role="TrG5h" value="pin" />
+      <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
+    </node>
   </node>
   <node concept="1TIwiD" id="2RsYsllZ3fl">
     <property role="EcuMT" value="3304790852529566677" />
@@ -117,6 +122,13 @@
       <property role="20kJfa" value="actuators" />
       <property role="20lbJX" value="fLJekj6/_1__n" />
       <ref role="20lvS9" node="2RsYsllZ3fj" resolve="Actuator" />
+    </node>
+    <node concept="1TJgyj" id="49I2eEzmc1d" role="1TKVEi">
+      <property role="IQ2ns" value="4786773257797288013" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="sensors" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <ref role="20lvS9" node="2RsYsllZ3fk" resolve="Sensor" />
     </node>
     <node concept="PrWs8" id="2RsYsllZ3fv" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
