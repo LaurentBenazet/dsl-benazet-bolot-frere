@@ -6,6 +6,7 @@ import io.github.mosser.arduinoml.kernel.behavioral.State;
 import io.github.mosser.arduinoml.kernel.behavioral.Transition;
 import io.github.mosser.arduinoml.kernel.structural.Actuator;
 import io.github.mosser.arduinoml.kernel.structural.Brick;
+import io.github.mosser.arduinoml.kernel.structural.SIGNAL;
 import io.github.mosser.arduinoml.kernel.structural.Sensor;
 
 /**
@@ -33,6 +34,13 @@ public class ToWiring extends Visitor<StringBuffer> {
         for (Brick brick : app.getBricks()) {
             brick.accept(this);
         }
+        w("}\n");
+
+        w("error_handler(){");
+            for(Transition transition : app.getErrorTransitions()){
+                transition.accept(this);
+            }
+
         w("}\n");
 
         w("long time = 0;\n");
@@ -89,8 +97,20 @@ public class ToWiring extends Visitor<StringBuffer> {
 
     @Override
     public void visit(Transition transition) {
-        w(String.format("  if( digitalRead(%d) == %s && guard ) {",
-                transition.getSensor().getPin(), transition.getValue()));
+
+        StringBuilder builder = new StringBuilder();
+
+        builder.append("  if( guard ");
+
+        transition.getConditions().forEach(condition -> {
+            int pin = condition.getSensor().getPin();
+            SIGNAL value = condition.getValue();
+            builder.append(String.format("&& digitalRead(%d) == %s ", pin, value));
+        });
+
+        builder.append(" ) {");
+
+        w(builder.toString());
         w("    time = millis();");
         w(String.format("    state_%s();", transition.getNext().getName()));
         w("  }");

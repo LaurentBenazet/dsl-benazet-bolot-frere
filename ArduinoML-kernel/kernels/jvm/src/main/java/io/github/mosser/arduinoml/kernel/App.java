@@ -1,6 +1,7 @@
 package io.github.mosser.arduinoml.kernel;
 
 import io.github.mosser.arduinoml.kernel.behavioral.State;
+import io.github.mosser.arduinoml.kernel.behavioral.Transition;
 import io.github.mosser.arduinoml.kernel.generator.Visitable;
 import io.github.mosser.arduinoml.kernel.generator.Visitor;
 import io.github.mosser.arduinoml.kernel.structural.Brick;
@@ -14,6 +15,7 @@ public class App implements NamedElement, Visitable {
 	private List<Brick> bricks = new ArrayList<>();
 	private List<State> states = new ArrayList<>();
 	private State initial;
+	private List<Transition> errorTransitions = new ArrayList<>();
 
 	@Override
 	public String getName() {
@@ -47,6 +49,14 @@ public class App implements NamedElement, Visitable {
 
 	public void setInitial(State initial) {
 		this.initial = initial;
+	}
+
+	public void setErrorTransitions(List<Transition> transitions){
+		this.errorTransitions = transitions;
+	}
+
+	public List<Transition> getErrorTransitions() {
+		return errorTransitions;
 	}
 
 	@Override
