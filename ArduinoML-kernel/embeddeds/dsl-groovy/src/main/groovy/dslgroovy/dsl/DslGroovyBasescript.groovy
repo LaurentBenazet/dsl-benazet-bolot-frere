@@ -25,12 +25,25 @@ abstract class DslGroovyBasescript extends Script {
         // recursive closure to allow multiple and statements
         def closure
         closure = { actuator ->
-            [becomes: { signal ->
+            [becomes : { signal ->
                 Action action = new Action()
                 action.setActuator(actuator instanceof String ? (Actuator) ((DslGroovyBinding) this.getBinding()).getVariable(actuator) : (Actuator) actuator)
                 action.setValue(signal instanceof String ? (SIGNAL) ((DslGroovyBinding) this.getBinding()).getVariable(signal) : (SIGNAL) signal)
                 actions.add(action)
                 [and: closure]
+            }, blinks: { amount ->
+                for (int i = 0; i < amount; i++) {
+                    Action action = new Action()
+                    action.setActuator(actuator instanceof String ? (Actuator) ((DslGroovyBinding) this.getBinding()).getVariable(actuator) : (Actuator) actuator)
+                    action.setValue(SIGNAL.HIGH)
+                    actions.add(action)
+
+                    action = new Action()
+                    action.setActuator(actuator instanceof String ? (Actuator) ((DslGroovyBinding) this.getBinding()).getVariable(actuator) : (Actuator) actuator)
+                    action.setValue(SIGNAL.LOW)
+                    actions.add(action)
+                }
+                [times: {}]
             }]
         }
         [means: closure]
@@ -62,7 +75,7 @@ abstract class DslGroovyBasescript extends Script {
     }
 
     def frequency(double delay) {
-        ((DslGroovyBinding) this.getBinding()).getModel().setFrequency(delay);
+        ((DslGroovyBinding) this.getBinding()).getModel().setFrequency(delay)
     }
 
     // export name
