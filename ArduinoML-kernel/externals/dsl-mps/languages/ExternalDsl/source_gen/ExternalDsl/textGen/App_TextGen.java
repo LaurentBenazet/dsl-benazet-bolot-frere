@@ -6,10 +6,10 @@ import jetbrains.mps.text.rt.TextGenDescriptorBase;
 import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -31,24 +31,12 @@ public class App_TextGen extends TextGenDescriptorBase {
     tgs.append("void setup(){");
     tgs.newLine();
     ctx.getBuffer().area().increaseIndent();
-    ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.actuators$$lkD)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        tgs.indent();
-        tgs.append("pinMode(");
-        tgs.append(String.valueOf(SPropertyOperations.getInteger(it, PROPS.pin$$l_3)));
-        tgs.append(", OUTPUT);");
-        tgs.newLine();
-      }
-    });
-    ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.sensors$xOD2)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        tgs.indent();
-        tgs.append("pinMode(");
-        tgs.append(String.valueOf(SPropertyOperations.getInteger(it, PROPS.pin$xOEV)));
-        tgs.append(", INPUT);");
-        tgs.newLine();
-      }
-    });
+    for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.actuators$$lkD)) {
+      tgs.appendNode(item);
+    }
+    for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.sensors$xOD2)) {
+      tgs.appendNode(item);
+    }
     ctx.getBuffer().area().decreaseIndent();
     tgs.append("}");
     tgs.newLine();
@@ -57,20 +45,45 @@ public class App_TextGen extends TextGenDescriptorBase {
     // timing stuff for extension 
     tgs.append("long time = 0;");
     tgs.newLine();
+    if (!(SPropertyOperations.hasValue(ctx.getPrimaryInput(), PROPS.freq$Mu$q, null))) {
+      tgs.append("long defFreq = 1000/");
+      tgs.append(String.valueOf(SPropertyOperations.getInteger(ctx.getPrimaryInput(), PROPS.freq$Mu$q)));
+      tgs.append(";");
+      tgs.newLine();
+    } else {
+      tgs.append("long defFreq = 200;");
+      tgs.newLine();
+    }
     tgs.newLine();
 
-    // iterate over all states( starting from initial 
+    // iterate over all states 
+    for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.states$$ljF)) {
+      tgs.appendNode(item);
+    }
+    tgs.newLine();
+    tgs.append("void loop() {");
+    tgs.newLine();
+
     ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.states$$ljF)).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
-        String.valueOf(it);
+        if (SPropertyOperations.getBoolean(it, PROPS.is_initial$KN7G)) {
+          ctx.getBuffer().area().increaseIndent();
+          tgs.indent();
+          tgs.append(SPropertyOperations.getString(it, PROPS.name$tAp1));
+          tgs.append("();");
+          tgs.newLine();
+          ctx.getBuffer().area().decreaseIndent();
+        }
       }
     });
+    tgs.append("}");
+    tgs.newLine();
   }
 
   private static final class PROPS {
     /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty pin$$l_3 = MetaAdapterFactory.getProperty(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x2ddcf9c555fc33d3L, 0x2ddcf9c555fc33e7L, "pin");
-    /*package*/ static final SProperty pin$xOEV = MetaAdapterFactory.getProperty(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x2ddcf9c555fc33d4L, 0x426e08eaa358c051L, "pin");
+    /*package*/ static final SProperty freq$Mu$q = MetaAdapterFactory.getProperty(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x2ddcf9c555fc33d7L, 0x426e08eaa36c820eL, "freq");
+    /*package*/ static final SProperty is_initial$KN7G = MetaAdapterFactory.getProperty(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x2ddcf9c555fc33d5L, 0x2ddcf9c555fce9c3L, "is_initial");
   }
 
   private static final class LINKS {

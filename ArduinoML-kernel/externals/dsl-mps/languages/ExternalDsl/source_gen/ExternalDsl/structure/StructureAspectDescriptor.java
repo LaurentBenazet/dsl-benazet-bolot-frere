@@ -21,6 +21,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptApp = createDescriptorForApp();
   /*package*/ final ConceptDescriptor myConceptSensor = createDescriptorForSensor();
   /*package*/ final ConceptDescriptor myConceptState = createDescriptorForState();
+  /*package*/ final ConceptDescriptor myConceptTransition = createDescriptorForTransition();
   /*package*/ final EnumerationDescriptor myEnumerationSIGNAL = new EnumerationDescriptor_SIGNAL();
   private final LanguageConceptSwitch myIndexSwitch;
 
@@ -36,7 +37,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAction, myConceptActuator, myConceptApp, myConceptSensor, myConceptState);
+    return Arrays.asList(myConceptAction, myConceptActuator, myConceptApp, myConceptSensor, myConceptState, myConceptTransition);
   }
 
   @Override
@@ -53,6 +54,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptSensor;
       case LanguageConceptSwitch.State:
         return myConceptState;
+      case LanguageConceptSwitch.Transition:
+        return myConceptTransition;
       default:
         return null;
     }
@@ -92,6 +95,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L);
     b.origin("r:ec3db262-98f7-4c13-8509-33adcfc7620a(ExternalDsl.structure)/3304790852529566679");
     b.version(2);
+    b.property("freq", 0x426e08eaa36c820eL).type(PrimitiveTypeId.INTEGER).origin("4786773257798582798").done();
     b.aggregate("states", 0x2ddcf9c555fc33d8L).target(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x2ddcf9c555fc33d5L).optional(false).ordered(true).multiple(true).origin("3304790852529566680").done();
     b.aggregate("actuators", 0x2ddcf9c555fc33daL).target(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x2ddcf9c555fc33d3L).optional(false).ordered(true).multiple(true).origin("3304790852529566682").done();
     b.aggregate("sensors", 0x426e08eaa358c04dL).target(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x2ddcf9c555fc33d4L).optional(true).ordered(true).multiple(true).origin("4786773257797288013").done();
@@ -113,8 +117,19 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:ec3db262-98f7-4c13-8509-33adcfc7620a(ExternalDsl.structure)/3304790852529566677");
     b.version(2);
     b.property("is_initial", 0x2ddcf9c555fce9c3L).type(PrimitiveTypeId.BOOLEAN).origin("3304790852529613251").done();
-    b.associate("next", 0x2ddcf9c555fc33f9L).target(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x2ddcf9c555fc33d5L).optional(false).origin("3304790852529566713").done();
+    b.property("frequency", 0x426e08eaa36c1384L).type(PrimitiveTypeId.INTEGER).origin("4786773257798554500").done();
     b.aggregate("actions", 0x2ddcf9c555fc33f7L).target(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x2ddcf9c555fc33f4L).optional(false).ordered(true).multiple(true).origin("3304790852529566711").done();
+    b.aggregate("transitions", 0x426e08eaa3624d24L).target(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x426e08eaa3624cfcL).optional(true).ordered(true).multiple(true).origin("4786773257797913892").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForTransition() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("ExternalDsl", "Transition", 0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x426e08eaa3624cfcL);
+    b.class_(false, false, false);
+    b.origin("r:ec3db262-98f7-4c13-8509-33adcfc7620a(ExternalDsl.structure)/4786773257797913852");
+    b.version(2);
+    b.property("value", 0x426e08eaa3624d19L).type(MetaIdFactory.dataTypeId(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x2ddcf9c555fc33edL)).origin("4786773257797913881").done();
+    b.associate("trigger", 0x426e08eaa3624d14L).target(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x2ddcf9c555fc33d4L).optional(false).origin("4786773257797913876").done();
+    b.associate("next", 0x426e08eaa3624d16L).target(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x2ddcf9c555fc33d5L).optional(false).origin("4786773257797913878").done();
     return b.create();
   }
 }

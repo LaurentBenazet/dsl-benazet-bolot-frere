@@ -5,10 +5,30 @@ package ExternalDsl.textGen;
 import jetbrains.mps.text.rt.TextGenDescriptorBase;
 import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public class Action_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
+    tgs.append("digitalWrite(");
+    tgs.append(String.valueOf(SPropertyOperations.getInteger(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.target$$rby), PROPS.pin$$l_3)));
+    tgs.append(",");
+    tgs.append(String.valueOf(SPropertyOperations.getEnum(ctx.getPrimaryInput(), PROPS.signal$$ra$)).toUpperCase());
+    tgs.append(");");
+    tgs.newLine();
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SReferenceLink target$$rby = MetaAdapterFactory.getReferenceLink(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x2ddcf9c555fc33f4L, 0x2ddcf9c555fc33feL, "target");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty pin$$l_3 = MetaAdapterFactory.getProperty(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x2ddcf9c555fc33d3L, 0x2ddcf9c555fc33e7L, "pin");
+    /*package*/ static final SProperty signal$$ra$ = MetaAdapterFactory.getProperty(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x2ddcf9c555fc33f4L, 0x2ddcf9c555fc33fcL, "signal");
   }
 }

@@ -6,19 +6,75 @@ import jetbrains.mps.text.rt.TextGenDescriptorBase;
 import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class State_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    tgs.append("test state: ");
+    tgs.append("void ");
     tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.name$tAp1));
+    tgs.append("{");
+    tgs.newLine();
+    ctx.getBuffer().area().increaseIndent();
+    tgs.indent();
+    for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.actions$$qWw)) {
+      tgs.appendNode(item);
+    }
+
+    // next is the different frequency values ordered 
+    if (!(SPropertyOperations.hasValue(ctx.getPrimaryInput(), PROPS.frequency$LCaY, null))) {
+      tgs.indent();
+      tgs.append("long debounce = 1000/");
+      tgs.append(String.valueOf(SPropertyOperations.getInteger(ctx.getPrimaryInput(), PROPS.frequency$LCaY)));
+      tgs.append(";");
+      tgs.newLine();
+    } else {
+      tgs.indent();
+      tgs.append("long debounce = defFreq;");
+      tgs.newLine();
+    }
+
+    tgs.indent();
+    tgs.append("boolean guard = millis() - time > debounce;");
+    tgs.newLine();
+    tgs.indent();
+    tgs.append("if(guard) {");
+    tgs.newLine();
+    tgs.indent();
+    tgs.indent();
+    tgs.append("time = millis();");
+    tgs.newLine();
+    tgs.indent();
+    tgs.append("}");
+    tgs.newLine();
+
+    // iterate over transitions  
+    for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.transitions$B$wa)) {
+      tgs.appendNode(item);
+    }
+
+    tgs.indent();
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.name$tAp1));
+    tgs.append("();");
+    tgs.newLine();
+    ctx.getBuffer().area().decreaseIndent();
+    tgs.append("}");
+    tgs.newLine();
     tgs.newLine();
   }
 
   private static final class PROPS {
     /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty frequency$LCaY = MetaAdapterFactory.getProperty(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x2ddcf9c555fc33d5L, 0x426e08eaa36c1384L, "frequency");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink actions$$qWw = MetaAdapterFactory.getContainmentLink(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x2ddcf9c555fc33d5L, 0x2ddcf9c555fc33f7L, "actions");
+    /*package*/ static final SContainmentLink transitions$B$wa = MetaAdapterFactory.getContainmentLink(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x2ddcf9c555fc33d5L, 0x426e08eaa3624d24L, "transitions");
   }
 }

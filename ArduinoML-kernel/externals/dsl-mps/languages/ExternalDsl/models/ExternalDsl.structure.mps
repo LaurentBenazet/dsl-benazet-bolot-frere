@@ -6,6 +6,7 @@
     <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
   </languages>
   <imports>
+    <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
   </imports>
   <registry>
@@ -92,16 +93,22 @@
       <property role="20lbJX" value="fLJekj6/_1__n" />
       <ref role="20lvS9" node="2RsYsllZ3fO" resolve="Action" />
     </node>
-    <node concept="1TJgyj" id="2RsYsllZ3fT" role="1TKVEi">
-      <property role="IQ2ns" value="3304790852529566713" />
-      <property role="20kJfa" value="next" />
-      <property role="20lbJX" value="fLJekj4/_1" />
-      <ref role="20lvS9" node="2RsYsllZ3fl" resolve="State" />
+    <node concept="1TJgyj" id="49I2eEzo$O$" role="1TKVEi">
+      <property role="IQ2ns" value="4786773257797913892" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="transitions" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <ref role="20lvS9" node="49I2eEzo$NW" resolve="Transition" />
     </node>
     <node concept="1TJgyi" id="2RsYsllZeB3" role="1TKVEl">
       <property role="IQ2nx" value="3304790852529613251" />
       <property role="TrG5h" value="is_initial" />
       <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+    </node>
+    <node concept="1TJgyi" id="49I2eEzr1e4" role="1TKVEl">
+      <property role="IQ2nx" value="4786773257798554500" />
+      <property role="TrG5h" value="frequency" />
+      <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
     </node>
   </node>
   <node concept="1TIwiD" id="2RsYsllZ3fn">
@@ -109,6 +116,11 @@
     <property role="TrG5h" value="App" />
     <property role="19KtqR" value="true" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyi" id="49I2eEzr88e" role="1TKVEl">
+      <property role="IQ2nx" value="4786773257798582798" />
+      <property role="TrG5h" value="freq" />
+      <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
+    </node>
     <node concept="1TJgyj" id="2RsYsllZ3fo" role="1TKVEi">
       <property role="IQ2ns" value="3304790852529566680" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
@@ -166,6 +178,28 @@
       <property role="20kJfa" value="target" />
       <property role="20lbJX" value="fLJekj4/_1" />
       <ref role="20lvS9" node="2RsYsllZ3fj" resolve="Actuator" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="49I2eEzo$NW">
+    <property role="EcuMT" value="4786773257797913852" />
+    <property role="TrG5h" value="Transition" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="49I2eEzo$Ok" role="1TKVEi">
+      <property role="IQ2ns" value="4786773257797913876" />
+      <property role="20kJfa" value="trigger" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" node="2RsYsllZ3fk" resolve="Sensor" />
+    </node>
+    <node concept="1TJgyj" id="49I2eEzo$Om" role="1TKVEi">
+      <property role="IQ2ns" value="4786773257797913878" />
+      <property role="20kJfa" value="next" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" node="2RsYsllZ3fl" resolve="State" />
+    </node>
+    <node concept="1TJgyi" id="49I2eEzo$Op" role="1TKVEl">
+      <property role="IQ2nx" value="4786773257797913881" />
+      <property role="TrG5h" value="value" />
+      <ref role="AX2Wp" node="2RsYsllZ3fH" resolve="SIGNAL" />
     </node>
   </node>
 </model>
