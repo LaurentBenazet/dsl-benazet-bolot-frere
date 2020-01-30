@@ -2,6 +2,7 @@ package io.github.mosser.arduinoml.kernel.generator;
 
 import io.github.mosser.arduinoml.kernel.App;
 import io.github.mosser.arduinoml.kernel.behavioral.Action;
+import io.github.mosser.arduinoml.kernel.behavioral.Condition;
 import io.github.mosser.arduinoml.kernel.behavioral.State;
 import io.github.mosser.arduinoml.kernel.behavioral.Transition;
 import io.github.mosser.arduinoml.kernel.structural.Actuator;
@@ -30,20 +31,23 @@ public class ToWiring extends Visitor<StringBuffer> {
         w("// Wiring code generated from an ArduinoML model");
         w(String.format("// Application name: %s\n", app.getName()));
 
+        w("long time = 0;\n");
+
         w("void setup(){");
         for (Brick brick : app.getBricks()) {
             brick.accept(this);
         }
         w("}\n");
 
-        w("error_handler(){");
-            for(Transition transition : app.getErrorTransitions()){
+        w("void error_handler(){");
+
+        w("boolean guard = true;");
+
+        for(Transition transition : app.getErrorTransitions()){
                 transition.accept(this);
             }
 
         w("}\n");
-
-        w("long time = 0;\n");
 
         for (State state : app.getStates()) {
             state.accept(this);
@@ -102,11 +106,11 @@ public class ToWiring extends Visitor<StringBuffer> {
 
         builder.append("  if( guard ");
 
-        transition.getConditions().forEach(condition -> {
+        for (Condition condition : transition.getConditions()) {
             int pin = condition.getSensor().getPin();
             SIGNAL value = condition.getValue();
             builder.append(String.format("&& digitalRead(%d) == %s ", pin, value));
-        });
+        }
 
         builder.append(" ) {");
 

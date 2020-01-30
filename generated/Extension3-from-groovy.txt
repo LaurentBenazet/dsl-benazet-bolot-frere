@@ -1,20 +1,21 @@
 // Wiring code generated from an ArduinoML model
 // Application name: Switch!
 
+long time = 0;
+
 void setup(){
   pinMode(11, INPUT);  // joystick [Sensor]
   pinMode(12, INPUT);  // button [Sensor]
   pinMode(9, OUTPUT); // led [Actuator]
 }
 
-error_handler(){
+void error_handler(){
+boolean guard = true;
   if( guard && digitalRead(12) == HIGH && digitalRead(11) == HIGH  ) {
     time = millis();
     state_error3();
   }
 }
-
-long time = 0;
 
 void state_off() {
   digitalWrite(9,LOW);
