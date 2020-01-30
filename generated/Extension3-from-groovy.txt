@@ -1,0 +1,87 @@
+// Wiring code generated from an ArduinoML model
+// Application name: Switch!
+
+void setup(){
+  pinMode(11, INPUT);  // joystick [Sensor]
+  pinMode(12, INPUT);  // button [Sensor]
+  pinMode(9, OUTPUT); // led [Actuator]
+}
+
+error_handler(){
+  if( guard && digitalRead(12) == HIGH && digitalRead(11) == HIGH  ) {
+    time = millis();
+    state_error3();
+  }
+}
+
+long time = 0;
+
+void state_off() {
+  digitalWrite(9,LOW);
+  long debounce = 200;
+  boolean guard = millis() - time > debounce;
+  if(guard) {
+    time = millis();
+  }
+  if( guard && digitalRead(11) == HIGH  ) {
+    time = millis();
+    state_joystickClick();
+  }
+  if( guard && digitalRead(12) == HIGH  ) {
+    time = millis();
+    state_buttonClick();
+  }
+  state_off();
+}
+
+void state_joystickClick() {
+  digitalWrite(9,LOW);
+  long debounce = 200;
+  boolean guard = millis() - time > debounce;
+  if(guard) {
+    time = millis();
+  }
+  if( guard && digitalRead(11) == LOW  ) {
+    time = millis();
+    state_off();
+  }
+  state_joystickClick();
+}
+
+void state_buttonClick() {
+  digitalWrite(9,LOW);
+  long debounce = 200;
+  boolean guard = millis() - time > debounce;
+  if(guard) {
+    time = millis();
+  }
+  if( guard && digitalRead(12) == LOW  ) {
+    time = millis();
+    state_off();
+  }
+  state_buttonClick();
+}
+
+void state_error3() {
+  digitalWrite(9,HIGH);
+  delay(500);
+  digitalWrite(9,LOW);
+  delay(500);
+  digitalWrite(9,HIGH);
+  delay(500);
+  digitalWrite(9,LOW);
+  delay(500);
+  digitalWrite(9,HIGH);
+  delay(500);
+  digitalWrite(9,LOW);
+  delay(500);
+  long debounce = 200;
+  boolean guard = millis() - time > debounce;
+  if(guard) {
+    time = millis();
+  }
+}
+
+void loop() {
+  state_off();
+}
