@@ -22,6 +22,7 @@ void state_off() {
   long debounce = 200;
   boolean guard = millis() - time > debounce;
   if(guard) {
+    error_handler();
     time = millis();
   }
   if( guard && digitalRead(11) == HIGH  ) {
@@ -40,6 +41,7 @@ void state_joystickClick() {
   long debounce = 200;
   boolean guard = millis() - time > debounce;
   if(guard) {
+    error_handler();
     time = millis();
   }
   if( guard && digitalRead(11) == LOW  ) {
@@ -54,6 +56,7 @@ void state_buttonClick() {
   long debounce = 200;
   boolean guard = millis() - time > debounce;
   if(guard) {
+    error_handler();
     time = millis();
   }
   if( guard && digitalRead(12) == LOW  ) {
@@ -79,6 +82,7 @@ void state_error3() {
   long debounce = 200;
   boolean guard = millis() - time > debounce;
   if(guard) {
+    error_handler();
     time = millis();
   }
 }

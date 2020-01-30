@@ -84,6 +84,7 @@ public class ToWiring extends Visitor<StringBuffer> {
         w("  long debounce = " + state.getDebounce() + ";");
         w("  boolean guard = millis() - time > debounce;");
         w("  if(guard) {");
+        w("    error_handler();");
         w("    time = millis();");
         w("  }");
         context.put(CURRENT_STATE, state);
