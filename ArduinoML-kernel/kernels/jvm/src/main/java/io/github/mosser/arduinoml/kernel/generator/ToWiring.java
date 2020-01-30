@@ -14,6 +14,7 @@ import io.github.mosser.arduinoml.kernel.structural.Sensor;
 public class ToWiring extends Visitor<StringBuffer> {
 
     private final static String CURRENT_STATE = "current_state";
+    private final static String FINAL_STATE = "final_state";
 
     public ToWiring() {
         this.result = new StringBuffer();
@@ -63,6 +64,9 @@ public class ToWiring extends Visitor<StringBuffer> {
         w(String.format("void state_%s() {", state.getName()));
         for (Action action : state.getActions()) {
             action.accept(this);
+            if (state.getActions().size() > 1) {
+                w("  delay(500);");
+            }
         }
 
         w("  long debounce = " + state.getDebounce() + ";");
@@ -76,7 +80,10 @@ public class ToWiring extends Visitor<StringBuffer> {
             transition.accept(this);
         }
 
-        w(String.format("  state_%s();", ((State) context.get(CURRENT_STATE)).getName()));
+        if (state.hasTransition()) {
+            w(String.format("  state_%s();", ((State) context.get(CURRENT_STATE)).getName()));
+        }
+
         w("}\n");
     }
 
