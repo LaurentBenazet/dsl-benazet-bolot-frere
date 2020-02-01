@@ -2,10 +2,7 @@ package dslgroovy.dsl;
 
 import groovy.lang.Binding;
 import io.github.mosser.arduinoml.kernel.App;
-import io.github.mosser.arduinoml.kernel.behavioral.Action;
-import io.github.mosser.arduinoml.kernel.behavioral.Condition;
-import io.github.mosser.arduinoml.kernel.behavioral.State;
-import io.github.mosser.arduinoml.kernel.behavioral.Transition;
+import io.github.mosser.arduinoml.kernel.behavioral.*;
 import io.github.mosser.arduinoml.kernel.generator.ToWiring;
 import io.github.mosser.arduinoml.kernel.generator.Visitor;
 import io.github.mosser.arduinoml.kernel.structural.Actuator;
@@ -61,6 +58,22 @@ public class DslGroovyModel {
 
     public void createState(String name, List<Action> actions) {
         State state = new State();
+        state.setName(name);
+        state.setActions(actions);
+
+        if (this.binding.hasVariable("frequency")) {
+            double frequency = (double) this.binding.getVariable("frequency");
+
+            if (frequency > 0)
+                state.setDebounce(1 / frequency * 1000);
+        }
+
+        this.states.add(state);
+        this.binding.setVariable(name, state);
+    }
+
+    public void createErrorState(String name, List<Action> actions){
+        State state = new ErrorState();
         state.setName(name);
         state.setActions(actions);
 

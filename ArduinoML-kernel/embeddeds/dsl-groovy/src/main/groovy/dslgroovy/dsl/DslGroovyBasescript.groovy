@@ -95,7 +95,7 @@ abstract class DslGroovyBasescript extends Script {
                 actions.add(action)
             }
 
-            model.createState((String) ("error${code}"), actions)
+            model.createErrorState((String) ("error${code}"), actions)
 
             transition.setNext(model.getState("error${code}"))
 

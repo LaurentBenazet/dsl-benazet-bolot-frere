@@ -1,10 +1,7 @@
 package io.github.mosser.arduinoml.kernel.generator;
 
 import io.github.mosser.arduinoml.kernel.App;
-import io.github.mosser.arduinoml.kernel.behavioral.Action;
-import io.github.mosser.arduinoml.kernel.behavioral.Condition;
-import io.github.mosser.arduinoml.kernel.behavioral.State;
-import io.github.mosser.arduinoml.kernel.behavioral.Transition;
+import io.github.mosser.arduinoml.kernel.behavioral.*;
 import io.github.mosser.arduinoml.kernel.structural.Actuator;
 import io.github.mosser.arduinoml.kernel.structural.Brick;
 import io.github.mosser.arduinoml.kernel.structural.SIGNAL;
@@ -87,6 +84,32 @@ public class ToWiring extends Visitor<StringBuffer> {
         w("    error_handler();");
         w("    time = millis();");
         w("  }");
+        context.put(CURRENT_STATE, state);
+
+        for (Transition transition : state.getTransitions()) {
+            transition.accept(this);
+        }
+
+        if (state.hasTransition()) {
+            w(String.format("  state_%s();", ((State) context.get(CURRENT_STATE)).getName()));
+        }
+
+        w("}\n");
+    }
+
+    @Override
+    public void visit(ErrorState state) {
+        w(String.format("void state_%s() {", state.getName()));
+        for (Action action : state.getActions()) {
+            action.accept(this);
+            if (state.getActions().size() > 1) {
+                w("  delay(500);");
+            }
+        }
+
+        w("  delay(500);");
+        w(String.format("  state_%s();", state.getName()));
+
         context.put(CURRENT_STATE, state);
 
         for (Transition transition : state.getTransitions()) {
