@@ -14,9 +14,10 @@
     <language id="36b21cb1-2274-40d2-9f74-baf372272c13" name="ExternalDsl">
       <concept id="4786773257797913852" name="ExternalDsl.structure.Transition" flags="ng" index="3x34gm">
         <reference id="4786773257797913878" name="next" index="3x34nW" />
-        <reference id="4786773257797913876" name="trigger" index="3x34nY" />
+        <child id="1402666108701864943" name="conditions" index="3SO3qb" />
       </concept>
       <concept id="3304790852529566677" name="ExternalDsl.structure.State" flags="ng" index="1S8cCg">
+        <property id="4786773257798554500" name="frequency" index="3x0xHI" />
         <property id="3304790852529613251" name="is_initial" index="1S8106" />
         <child id="4786773257797913892" name="transitions" index="3x34ne" />
         <child id="3304790852529566711" name="actions" index="1S8cCM" />
@@ -37,20 +38,34 @@
         <property id="3304790852529566716" name="signal" index="1S8cCT" />
         <reference id="3304790852529566718" name="target" index="1S8cCV" />
       </concept>
+      <concept id="1402666108701864938" name="ExternalDsl.structure.Condition" flags="ng" index="3SO3qe">
+        <property id="1402666108701864939" name="value" index="3SO3qf" />
+        <reference id="1402666108701864941" name="trigger" index="3SO3q9" />
+      </concept>
     </language>
   </registry>
   <node concept="1S8cCi" id="49I2eEzsGA9">
     <property role="TrG5h" value="Test" />
-    <property role="3x0CF$" value="44" />
+    <property role="3x0CF$" value="42" />
     <node concept="1S8cCh" id="49I2eEzsGAd" role="3xdGyB">
       <property role="TrG5h" value="button" />
       <property role="3xdGyV" value="12" />
     </node>
+    <node concept="1S8cCh" id="1dRhmjFEPqR" role="3xdGyB">
+      <property role="TrG5h" value="joystick" />
+      <property role="3xdGyV" value="11" />
+    </node>
     <node concept="1S8cCg" id="49I2eEzsGAa" role="1S8cCt">
       <property role="TrG5h" value="state_on" />
-      <node concept="3x34gm" id="49I2eEzsGAt" role="3x34ne">
+      <property role="3x0xHI" value="666" />
+      <node concept="3x34gm" id="1dRhmjFFnrl" role="3x34ne">
         <ref role="3x34nW" node="49I2eEzsGAh" resolve="state_off" />
-        <ref role="3x34nY" node="49I2eEzsGAd" resolve="button" />
+        <node concept="3SO3qe" id="1dRhmjFFnrs" role="3SO3qb">
+          <ref role="3SO3q9" node="49I2eEzsGAd" resolve="button" />
+        </node>
+        <node concept="3SO3qe" id="1dRhmjFFnrw" role="3SO3qb">
+          <ref role="3SO3q9" node="1dRhmjFEPqR" resolve="joystick" />
+        </node>
       </node>
       <node concept="1S8cCL" id="49I2eEzsGAn" role="1S8cCM">
         <ref role="1S8cCV" node="49I2eEzsGAc" resolve="led" />
@@ -59,9 +74,12 @@
     <node concept="1S8cCg" id="49I2eEzsGAh" role="1S8cCt">
       <property role="TrG5h" value="state_off" />
       <property role="1S8106" value="true" />
-      <node concept="3x34gm" id="49I2eEzsGAv" role="3x34ne">
+      <node concept="3x34gm" id="1dRhmjFEuI2" role="3x34ne">
         <ref role="3x34nW" node="49I2eEzsGAa" resolve="state_on" />
-        <ref role="3x34nY" node="49I2eEzsGAd" resolve="button" />
+        <node concept="3SO3qe" id="1dRhmjFEuI6" role="3SO3qb">
+          <property role="3SO3qf" value="2RsYsllZ3fJ/LOW" />
+          <ref role="3SO3q9" node="49I2eEzsGAd" resolve="button" />
+        </node>
       </node>
       <node concept="1S8cCL" id="49I2eEzsGAq" role="1S8cCM">
         <property role="1S8cCT" value="2RsYsllZ3fJ/LOW" />

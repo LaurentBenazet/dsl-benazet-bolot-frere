@@ -13,6 +13,8 @@
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
       <concept id="1071666914219" name="jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration" flags="ig" index="24kQdi" />
       <concept id="1140524381322" name="jetbrains.mps.lang.editor.structure.CellModel_ListWithRole" flags="ng" index="2czfm3">
+        <property id="1140524450557" name="separatorText" index="2czwfO" />
+        <property id="1156252885376" name="separatorLayoutConstraint" index="Q2I2d" />
         <child id="1140524464360" name="cellLayout" index="2czzBx" />
         <child id="1140524464359" name="emptyCellModel" index="2czzBI" />
       </concept>
@@ -266,7 +268,7 @@
         <node concept="VPM3Z" id="49I2eEzsvPt" role="3F10Kt" />
         <node concept="3XFhqQ" id="49I2eEzsA22" role="3EZMnx" />
         <node concept="3F0ifn" id="49I2eEzsvPv" role="3EZMnx">
-          <property role="3F0ifm" value="frequency" />
+          <property role="3F0ifm" value="frequency :" />
         </node>
         <node concept="3F0A7n" id="49I2eEzsvQi" role="3EZMnx">
           <property role="1O74Pk" value="true" />
@@ -371,20 +373,12 @@
       <node concept="3F0ifn" id="49I2eEzo$PM" role="3EZMnx">
         <property role="3F0ifm" value=" when " />
       </node>
-      <node concept="1iCGBv" id="49I2eEzo$Q0" role="3EZMnx">
-        <ref role="1NtTu8" to="heqe:49I2eEzo$Ok" resolve="trigger" />
-        <node concept="1sVBvm" id="49I2eEzo$Q2" role="1sWHZn">
-          <node concept="3F0A7n" id="49I2eEzo$Qe" role="2wV5jI">
-            <property role="1Intyy" value="true" />
-            <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
-          </node>
-        </node>
-      </node>
-      <node concept="3F0ifn" id="49I2eEzo$Qr" role="3EZMnx">
-        <property role="3F0ifm" value="is " />
-      </node>
-      <node concept="3F0A7n" id="49I2eEzo$QL" role="3EZMnx">
-        <ref role="1NtTu8" to="heqe:49I2eEzo$Op" resolve="value" />
+      <node concept="3F2HdR" id="1dRhmjFEuVT" role="3EZMnx">
+        <property role="Q2I2d" value="g$1RmbY/noflow" />
+        <property role="2czwfO" value=" and" />
+        <ref role="1NtTu8" to="heqe:1dRhmjFDRfJ" resolve="conditions" />
+        <node concept="VPM3Z" id="1dRhmjFEuVX" role="3F10Kt" />
+        <node concept="2iRfu4" id="1dRhmjFEEhL" role="2czzBx" />
       </node>
     </node>
   </node>
@@ -404,6 +398,27 @@
         <ref role="1NtTu8" to="heqe:49I2eEzmc1h" resolve="pin" />
       </node>
       <node concept="2iRfu4" id="49I2eEzoR5z" role="2iSdaV" />
+    </node>
+  </node>
+  <node concept="24kQdi" id="1dRhmjFEj$o">
+    <ref role="1XX52x" to="heqe:1dRhmjFDRfE" resolve="Condition" />
+    <node concept="3EZMnI" id="1dRhmjFEj$q" role="2wV5jI">
+      <node concept="1iCGBv" id="1dRhmjFEj$x" role="3EZMnx">
+        <ref role="1NtTu8" to="heqe:1dRhmjFDRfH" resolve="trigger" />
+        <node concept="1sVBvm" id="1dRhmjFEj$z" role="1sWHZn">
+          <node concept="3F0A7n" id="1dRhmjFEj$E" role="2wV5jI">
+            <property role="1Intyy" value="true" />
+            <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+          </node>
+        </node>
+      </node>
+      <node concept="3F0ifn" id="1dRhmjFEj$M" role="3EZMnx">
+        <property role="3F0ifm" value="is" />
+      </node>
+      <node concept="3F0A7n" id="1dRhmjFEj$Y" role="3EZMnx">
+        <ref role="1NtTu8" to="heqe:1dRhmjFDRfF" resolve="value" />
+      </node>
+      <node concept="2iRfu4" id="1dRhmjFEj$t" role="2iSdaV" />
     </node>
   </node>
 </model>

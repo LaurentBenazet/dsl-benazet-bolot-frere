@@ -74,6 +74,8 @@
         <child id="1237305790512" name="value" index="lb14g" />
       </concept>
       <concept id="1237305491868" name="jetbrains.mps.lang.textGen.structure.CollectionAppendPart" flags="ng" index="l9S2W">
+        <property id="1237306003719" name="separator" index="lbP0B" />
+        <property id="1237983969951" name="withSeparator" index="XA4eZ" />
         <child id="1237305945551" name="list" index="lbANJ" />
       </concept>
       <concept id="1237305557638" name="jetbrains.mps.lang.textGen.structure.ConstantStringAppendPart" flags="ng" index="la8eA">
@@ -742,42 +744,15 @@
         <node concept="1bpajm" id="49I2eEzqcuG" role="3cqZAp" />
         <node concept="lc7rE" id="49I2eEzq4sc" role="3cqZAp">
           <node concept="la8eA" id="49I2eEzq4s$" role="lcghm">
-            <property role="lacIc" value="if( digitalRead(" />
+            <property role="lacIc" value="if( " />
           </node>
-          <node concept="l9hG8" id="49I2eEzq4x2" role="lcghm">
-            <node concept="2YIFZM" id="49I2eEzq5z1" role="lb14g">
-              <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-              <ref role="37wK5l" to="wyt6:~String.valueOf(int)" resolve="valueOf" />
-              <node concept="2OqwBi" id="49I2eEzq627" role="37wK5m">
-                <node concept="2OqwBi" id="49I2eEzq5KH" role="2Oq$k0">
-                  <node concept="117lpO" id="49I2eEzq5$v" role="2Oq$k0" />
-                  <node concept="3TrEf2" id="49I2eEzq5Ti" role="2OqNvi">
-                    <ref role="3Tt5mk" to="heqe:49I2eEzo$Ok" resolve="trigger" />
-                  </node>
-                </node>
-                <node concept="3TrcHB" id="49I2eEzq6eM" role="2OqNvi">
-                  <ref role="3TsBF5" to="heqe:49I2eEzmc1h" resolve="pin" />
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="la8eA" id="49I2eEzq6YN" role="lcghm">
-            <property role="lacIc" value=") == " />
-          </node>
-          <node concept="l9hG8" id="49I2eEzq7Cs" role="lcghm">
-            <node concept="2OqwBi" id="49I2eEzqLgr" role="lb14g">
-              <node concept="2YIFZM" id="49I2eEzqKF$" role="2Oq$k0">
-                <ref role="37wK5l" to="wyt6:~String.valueOf(java.lang.Object)" resolve="valueOf" />
-                <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                <node concept="2OqwBi" id="49I2eEzqKTD" role="37wK5m">
-                  <node concept="117lpO" id="49I2eEzqKHr" role="2Oq$k0" />
-                  <node concept="3TrcHB" id="49I2eEzqL1t" role="2OqNvi">
-                    <ref role="3TsBF5" to="heqe:49I2eEzo$Op" resolve="value" />
-                  </node>
-                </node>
-              </node>
-              <node concept="liA8E" id="49I2eEzqLzA" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.toUpperCase()" resolve="toUpperCase" />
+          <node concept="l9S2W" id="1dRhmjFFon1" role="lcghm">
+            <property role="XA4eZ" value="true" />
+            <property role="lbP0B" value=" &amp;&amp; " />
+            <node concept="2OqwBi" id="1dRhmjFFot8" role="lbANJ">
+              <node concept="117lpO" id="1dRhmjFFons" role="2Oq$k0" />
+              <node concept="3Tsc0h" id="1dRhmjFFouc" role="2OqNvi">
+                <ref role="3TtcxE" to="heqe:1dRhmjFDRfJ" resolve="conditions" />
               </node>
             </node>
           </node>
@@ -823,6 +798,55 @@
             <property role="lacIc" value="}" />
           </node>
           <node concept="l8MVK" id="49I2eEzqDzM" role="lcghm" />
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="WtQ9Q" id="1dRhmjFFoxE">
+    <ref role="WuzLi" to="heqe:1dRhmjFDRfE" resolve="Condition" />
+    <node concept="11bSqf" id="1dRhmjFFoxF" role="11c4hB">
+      <node concept="3clFbS" id="1dRhmjFFoxG" role="2VODD2">
+        <node concept="lc7rE" id="1dRhmjFFoy1" role="3cqZAp">
+          <node concept="la8eA" id="1dRhmjFFAE2" role="lcghm">
+            <property role="lacIc" value="digitalRead(" />
+          </node>
+          <node concept="l9hG8" id="1dRhmjFFoyn" role="lcghm">
+            <node concept="2YIFZM" id="1dRhmjFFp_1" role="lb14g">
+              <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
+              <ref role="37wK5l" to="wyt6:~String.valueOf(int)" resolve="valueOf" />
+              <node concept="2OqwBi" id="1dRhmjFFq3m" role="37wK5m">
+                <node concept="2OqwBi" id="1dRhmjFFpMH" role="2Oq$k0">
+                  <node concept="117lpO" id="1dRhmjFFpAv" role="2Oq$k0" />
+                  <node concept="3TrEf2" id="1dRhmjFFpUx" role="2OqNvi">
+                    <ref role="3Tt5mk" to="heqe:1dRhmjFDRfH" resolve="trigger" />
+                  </node>
+                </node>
+                <node concept="3TrcHB" id="1dRhmjFFqei" role="2OqNvi">
+                  <ref role="3TsBF5" to="heqe:49I2eEzmc1h" resolve="pin" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="la8eA" id="1dRhmjFFqVy" role="lcghm">
+            <property role="lacIc" value=") == " />
+          </node>
+          <node concept="l9hG8" id="1dRhmjFFr_l" role="lcghm">
+            <node concept="2OqwBi" id="1dRhmjFFsaS" role="lb14g">
+              <node concept="2YIFZM" id="1dRhmjFFrCx" role="2Oq$k0">
+                <ref role="37wK5l" to="wyt6:~String.valueOf(java.lang.Object)" resolve="valueOf" />
+                <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
+                <node concept="2OqwBi" id="1dRhmjFFrPP" role="37wK5m">
+                  <node concept="117lpO" id="1dRhmjFFrDB" role="2Oq$k0" />
+                  <node concept="3TrcHB" id="1dRhmjFFrXD" role="2OqNvi">
+                    <ref role="3TsBF5" to="heqe:1dRhmjFDRfF" resolve="value" />
+                  </node>
+                </node>
+              </node>
+              <node concept="liA8E" id="1dRhmjFFsv9" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~String.toUpperCase()" resolve="toUpperCase" />
+              </node>
+            </node>
+          </node>
         </node>
       </node>
     </node>

@@ -143,7 +143,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private EditorCell createConstant_2() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "frequency");
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "frequency :");
     editorCell.setCellId("Constant_g38wqt_b2a");
     editorCell.setDefaultText("");
     return editorCell;

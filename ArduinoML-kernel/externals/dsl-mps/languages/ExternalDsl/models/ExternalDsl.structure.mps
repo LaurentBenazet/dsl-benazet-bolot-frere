@@ -184,22 +184,34 @@
     <property role="EcuMT" value="4786773257797913852" />
     <property role="TrG5h" value="Transition" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
-    <node concept="1TJgyj" id="49I2eEzo$Ok" role="1TKVEi">
-      <property role="IQ2ns" value="4786773257797913876" />
-      <property role="20kJfa" value="trigger" />
-      <property role="20lbJX" value="fLJekj4/_1" />
-      <ref role="20lvS9" node="2RsYsllZ3fk" resolve="Sensor" />
-    </node>
     <node concept="1TJgyj" id="49I2eEzo$Om" role="1TKVEi">
       <property role="IQ2ns" value="4786773257797913878" />
       <property role="20kJfa" value="next" />
       <property role="20lbJX" value="fLJekj4/_1" />
       <ref role="20lvS9" node="2RsYsllZ3fl" resolve="State" />
     </node>
-    <node concept="1TJgyi" id="49I2eEzo$Op" role="1TKVEl">
-      <property role="IQ2nx" value="4786773257797913881" />
+    <node concept="1TJgyj" id="1dRhmjFDRfJ" role="1TKVEi">
+      <property role="IQ2ns" value="1402666108701864943" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="conditions" />
+      <property role="20lbJX" value="fLJekj6/_1__n" />
+      <ref role="20lvS9" node="1dRhmjFDRfE" resolve="Condition" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="1dRhmjFDRfE">
+    <property role="EcuMT" value="1402666108701864938" />
+    <property role="TrG5h" value="Condition" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyi" id="1dRhmjFDRfF" role="1TKVEl">
+      <property role="IQ2nx" value="1402666108701864939" />
       <property role="TrG5h" value="value" />
       <ref role="AX2Wp" node="2RsYsllZ3fH" resolve="SIGNAL" />
+    </node>
+    <node concept="1TJgyj" id="1dRhmjFDRfH" role="1TKVEi">
+      <property role="IQ2ns" value="1402666108701864941" />
+      <property role="20kJfa" value="trigger" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" node="2RsYsllZ3fk" resolve="Sensor" />
     </node>
   </node>
 </model>

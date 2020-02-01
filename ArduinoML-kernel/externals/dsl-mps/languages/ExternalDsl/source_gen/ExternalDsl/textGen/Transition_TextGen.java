@@ -5,10 +5,13 @@ package ExternalDsl.textGen;
 import jetbrains.mps.text.rt.TextGenDescriptorBase;
 import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import org.jetbrains.mps.openapi.language.SReferenceLink;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class Transition_TextGen extends TextGenDescriptorBase {
@@ -16,10 +19,17 @@ public class Transition_TextGen extends TextGenDescriptorBase {
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     tgs.indent();
-    tgs.append("if( digitalRead(");
-    tgs.append(String.valueOf(SPropertyOperations.getInteger(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.trigger$xulv), PROPS.pin$xOEV)));
-    tgs.append(") == ");
-    tgs.append(String.valueOf(SPropertyOperations.getEnum(ctx.getPrimaryInput(), PROPS.value$xuy5)).toUpperCase());
+    tgs.append("if( ");
+    {
+      Iterable<SNode> collection = SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.conditions$wsnW);
+      final SNode lastItem = Sequence.fromIterable(collection).last();
+      for (SNode item : collection) {
+        tgs.appendNode(item);
+        if (item != lastItem) {
+          tgs.append(" && ");
+        }
+      }
+    }
     tgs.append(" && guard ) {");
     tgs.newLine();
     ctx.getBuffer().area().increaseIndent();
@@ -37,13 +47,11 @@ public class Transition_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink trigger$xulv = MetaAdapterFactory.getReferenceLink(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x426e08eaa3624cfcL, 0x426e08eaa3624d14L, "trigger");
+    /*package*/ static final SContainmentLink conditions$wsnW = MetaAdapterFactory.getContainmentLink(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x426e08eaa3624cfcL, 0x13774564eba773efL, "conditions");
     /*package*/ static final SReferenceLink next$xumt = MetaAdapterFactory.getReferenceLink(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x426e08eaa3624cfcL, 0x426e08eaa3624d16L, "next");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty pin$xOEV = MetaAdapterFactory.getProperty(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x2ddcf9c555fc33d4L, 0x426e08eaa358c051L, "pin");
-    /*package*/ static final SProperty value$xuy5 = MetaAdapterFactory.getProperty(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x426e08eaa3624cfcL, 0x426e08eaa3624d19L, "value");
     /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }
