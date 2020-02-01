@@ -79,12 +79,8 @@ void state_error3() {
   delay(500);
   digitalWrite(9,LOW);
   delay(500);
-  long debounce = 200;
-  boolean guard = millis() - time > debounce;
-  if(guard) {
-    error_handler();
-    time = millis();
-  }
+  delay(500);
+  state_error3();
 }
 
 void loop() {
