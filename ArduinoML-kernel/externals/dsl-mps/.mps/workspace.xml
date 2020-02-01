@@ -162,6 +162,68 @@
               <option name="myItemId" value="36b21cb1-2274-40d2-9f74-baf372272c13(ExternalDsl)" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="r:a28e0cfb-781a-4c91-81a4-1abe534238fe(ExternalDsl.editor) in IdeaFile[path: D:/SI5/DSL/dsl-benazet-bolot-frere/ArduinoML-kernel/externals/dsl-mps/languages/ExternalDsl/models/ExternalDsl.editor.mps]" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="36b21cb1-2274-40d2-9f74-baf372272c13(ExternalDsl)" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="r:65f9d5e8-edb1-43dd-ae9f-59548288966e(ExternalDsl.constraints) in IdeaFile[path: D:/SI5/DSL/dsl-benazet-bolot-frere/ArduinoML-kernel/externals/dsl-mps/languages/ExternalDsl/models/ExternalDsl.constraints.mps]" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="36b21cb1-2274-40d2-9f74-baf372272c13(ExternalDsl)" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="36b21cb1-2274-40d2-9f74-baf372272c13(ExternalDsl)" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="r:418bcdf3-d3ad-4c14-9105-a6eeb5a7a7df(ExternalDsl.behavior) in IdeaFile[path: D:/SI5/DSL/dsl-benazet-bolot-frere/ArduinoML-kernel/externals/dsl-mps/languages/ExternalDsl/models/ExternalDsl.behavior.mps]" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="514c67de-fd73-41f3-9a69-151fcf4f867f" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ExternalDsl" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -209,6 +271,20 @@
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="36b21cb1-2274-40d2-9f74-baf372272c13(ExternalDsl)" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="r:663b39e8-e3dc-4b1f-9eb3-0c154d2dfb2e(ExternalDsl.textGen) in IdeaFile[path: D:/SI5/DSL/dsl-benazet-bolot-frere/ArduinoML-kernel/externals/dsl-mps/languages/ExternalDsl/models/ExternalDsl.textGen.mps]" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="514c67de-fd73-41f3-9a69-151fcf4f867f" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -224,54 +300,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="ExternalDsl#01" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Project" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="36b21cb1-2274-40d2-9f74-baf372272c13(ExternalDsl)" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="r:65f9d5e8-edb1-43dd-ae9f-59548288966e(ExternalDsl.constraints) in IdeaFile[path: D:/SI5/DSL/dsl-benazet-bolot-frere/ArduinoML-kernel/externals/dsl-mps/languages/ExternalDsl/models/ExternalDsl.constraints.mps]" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Project" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Project" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="36b21cb1-2274-40d2-9f74-baf372272c13(ExternalDsl)" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="r:a28e0cfb-781a-4c91-81a4-1abe534238fe(ExternalDsl.editor) in IdeaFile[path: D:/SI5/DSL/dsl-benazet-bolot-frere/ArduinoML-kernel/externals/dsl-mps/languages/ExternalDsl/models/ExternalDsl.editor.mps]" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Project" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="36b21cb1-2274-40d2-9f74-baf372272c13(ExternalDsl)" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="r:ec3db262-98f7-4c13-8509-33adcfc7620a(ExternalDsl.structure) in IdeaFile[path: D:/SI5/DSL/dsl-benazet-bolot-frere/ArduinoML-kernel/externals/dsl-mps/languages/ExternalDsl/models/ExternalDsl.structure.mps]" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
@@ -303,35 +331,7 @@
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="r:418bcdf3-d3ad-4c14-9105-a6eeb5a7a7df(ExternalDsl.behavior) in IdeaFile[path: D:/SI5/DSL/dsl-benazet-bolot-frere/ArduinoML-kernel/externals/dsl-mps/languages/ExternalDsl/models/ExternalDsl.behavior.mps]" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Project" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="36b21cb1-2274-40d2-9f74-baf372272c13(ExternalDsl)" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="r:663b39e8-e3dc-4b1f-9eb3-0c154d2dfb2e(ExternalDsl.textGen) in IdeaFile[path: D:/SI5/DSL/dsl-benazet-bolot-frere/ArduinoML-kernel/externals/dsl-mps/languages/ExternalDsl/models/ExternalDsl.textGen.mps]" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Project" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="514c67de-fd73-41f3-9a69-151fcf4f867f" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ExternalDsl" />
+              <option name="myItemId" value="r:ec3db262-98f7-4c13-8509-33adcfc7620a(ExternalDsl.structure) in IdeaFile[path: D:/SI5/DSL/dsl-benazet-bolot-frere/ArduinoML-kernel/externals/dsl-mps/languages/ExternalDsl/models/ExternalDsl.structure.mps]" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>

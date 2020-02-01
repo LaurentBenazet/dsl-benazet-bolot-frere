@@ -142,6 +142,13 @@
       <property role="20lbJX" value="fLJekj5/_0__n" />
       <ref role="20lvS9" node="2RsYsllZ3fk" resolve="Sensor" />
     </node>
+    <node concept="1TJgyj" id="1dRhmjFFT9W" role="1TKVEi">
+      <property role="IQ2ns" value="1402666108702397052" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="errors" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <ref role="20lvS9" node="1dRhmjFFG2q" resolve="Error" />
+    </node>
     <node concept="PrWs8" id="2RsYsllZ3fv" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
@@ -212,6 +219,29 @@
       <property role="20kJfa" value="trigger" />
       <property role="20lbJX" value="fLJekj4/_1" />
       <ref role="20lvS9" node="2RsYsllZ3fk" resolve="Sensor" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="1dRhmjFFG2q">
+    <property role="EcuMT" value="1402666108702343322" />
+    <property role="TrG5h" value="Error" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="1dRhmjFHfaR" role="1TKVEi">
+      <property role="IQ2ns" value="1402666108702749367" />
+      <property role="20kJfa" value="actu" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" node="2RsYsllZ3fj" resolve="Actuator" />
+    </node>
+    <node concept="1TJgyi" id="1dRhmjFFG2T" role="1TKVEl">
+      <property role="IQ2nx" value="1402666108702343353" />
+      <property role="TrG5h" value="name" />
+      <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
+    </node>
+    <node concept="1TJgyj" id="1dRhmjFFGEi" role="1TKVEi">
+      <property role="IQ2ns" value="1402666108702345874" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="conditions" />
+      <property role="20lbJX" value="fLJekj6/_1__n" />
+      <ref role="20lvS9" node="1dRhmjFDRfE" resolve="Condition" />
     </node>
   </node>
 </model>

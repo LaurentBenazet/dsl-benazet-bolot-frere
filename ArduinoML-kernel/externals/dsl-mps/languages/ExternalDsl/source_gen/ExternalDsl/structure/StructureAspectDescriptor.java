@@ -20,6 +20,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptActuator = createDescriptorForActuator();
   /*package*/ final ConceptDescriptor myConceptApp = createDescriptorForApp();
   /*package*/ final ConceptDescriptor myConceptCondition = createDescriptorForCondition();
+  /*package*/ final ConceptDescriptor myConceptError = createDescriptorForError();
   /*package*/ final ConceptDescriptor myConceptSensor = createDescriptorForSensor();
   /*package*/ final ConceptDescriptor myConceptState = createDescriptorForState();
   /*package*/ final ConceptDescriptor myConceptTransition = createDescriptorForTransition();
@@ -38,7 +39,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAction, myConceptActuator, myConceptApp, myConceptCondition, myConceptSensor, myConceptState, myConceptTransition);
+    return Arrays.asList(myConceptAction, myConceptActuator, myConceptApp, myConceptCondition, myConceptError, myConceptSensor, myConceptState, myConceptTransition);
   }
 
   @Override
@@ -53,6 +54,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptApp;
       case LanguageConceptSwitch.Condition:
         return myConceptCondition;
+      case LanguageConceptSwitch.Error:
+        return myConceptError;
       case LanguageConceptSwitch.Sensor:
         return myConceptSensor;
       case LanguageConceptSwitch.State:
@@ -102,6 +105,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("states", 0x2ddcf9c555fc33d8L).target(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x2ddcf9c555fc33d5L).optional(false).ordered(true).multiple(true).origin("3304790852529566680").done();
     b.aggregate("actuators", 0x2ddcf9c555fc33daL).target(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x2ddcf9c555fc33d3L).optional(false).ordered(true).multiple(true).origin("3304790852529566682").done();
     b.aggregate("sensors", 0x426e08eaa358c04dL).target(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x2ddcf9c555fc33d4L).optional(true).ordered(true).multiple(true).origin("4786773257797288013").done();
+    b.aggregate("errors", 0x13774564ebaf927cL).target(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x13774564ebaec09aL).optional(true).ordered(true).multiple(true).origin("1402666108702397052").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForCondition() {
@@ -111,6 +115,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     b.property("value", 0x13774564eba773ebL).type(MetaIdFactory.dataTypeId(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x2ddcf9c555fc33edL)).origin("1402666108701864939").done();
     b.associate("trigger", 0x13774564eba773edL).target(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x2ddcf9c555fc33d4L).optional(false).origin("1402666108701864941").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForError() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("ExternalDsl", "Error", 0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x13774564ebaec09aL);
+    b.class_(false, false, false);
+    b.origin("r:ec3db262-98f7-4c13-8509-33adcfc7620a(ExternalDsl.structure)/1402666108702343322");
+    b.version(2);
+    b.property("name", 0x13774564ebaec0b9L).type(PrimitiveTypeId.INTEGER).origin("1402666108702343353").done();
+    b.associate("actu", 0x13774564ebb4f2b7L).target(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x2ddcf9c555fc33d3L).optional(false).origin("1402666108702749367").done();
+    b.aggregate("conditions", 0x13774564ebaeca92L).target(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x13774564eba773eaL).optional(false).ordered(true).multiple(true).origin("1402666108702345874").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForSensor() {

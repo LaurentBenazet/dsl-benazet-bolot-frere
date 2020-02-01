@@ -18,7 +18,7 @@ public class State_TextGen extends TextGenDescriptorBase {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     tgs.append("void ");
     tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.name$tAp1));
-    tgs.append("{");
+    tgs.append("(){");
     tgs.newLine();
     ctx.getBuffer().area().increaseIndent();
     tgs.indent();
@@ -44,6 +44,10 @@ public class State_TextGen extends TextGenDescriptorBase {
     tgs.newLine();
     tgs.indent();
     tgs.append("if(guard) {");
+    tgs.newLine();
+    tgs.indent();
+    tgs.indent();
+    tgs.append("error_handler();");
     tgs.newLine();
     tgs.indent();
     tgs.indent();

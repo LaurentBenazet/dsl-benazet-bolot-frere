@@ -10,6 +10,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -40,6 +41,47 @@ public class App_TextGen extends TextGenDescriptorBase {
     ctx.getBuffer().area().decreaseIndent();
     tgs.append("}");
     tgs.newLine();
+    tgs.newLine();
+
+    // error stuff 
+    tgs.append("void error_handler(){");
+    tgs.newLine();
+    ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.errors$gebC)).visitAll(new IVisitor<SNode>() {
+      public void visit(SNode it) {
+        ctx.getBuffer().area().increaseIndent();
+        tgs.indent();
+        tgs.append("if( ");
+        {
+          Iterable<SNode> collection = SLinkOperations.getChildren(it, LINKS.conditions$G2nx);
+          final SNode lastItem = Sequence.fromIterable(collection).last();
+          for (SNode item : collection) {
+            tgs.appendNode(item);
+            if (item != lastItem) {
+              tgs.append(" && ");
+            }
+          }
+        }
+        tgs.append(") {");
+        tgs.newLine();
+        ctx.getBuffer().area().increaseIndent();
+        tgs.indent();
+        tgs.append("state_error");
+        tgs.append(String.valueOf(SPropertyOperations.getInteger(it, PROPS.name$$q_z)));
+        tgs.append("();");
+        tgs.newLine();
+        ctx.getBuffer().area().decreaseIndent();
+        tgs.indent();
+        tgs.append("}");
+        tgs.newLine();
+        ctx.getBuffer().area().decreaseIndent();
+      }
+    });
+    tgs.append("}");
+    tgs.newLine();
+    tgs.newLine();
+    for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.errors$gebC)) {
+      tgs.appendNode(item);
+    }
     tgs.newLine();
 
     // timing stuff for extension 
@@ -82,6 +124,7 @@ public class App_TextGen extends TextGenDescriptorBase {
 
   private static final class PROPS {
     /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$$q_z = MetaAdapterFactory.getProperty(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x13774564ebaec09aL, 0x13774564ebaec0b9L, "name");
     /*package*/ static final SProperty freq$Mu$q = MetaAdapterFactory.getProperty(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x2ddcf9c555fc33d7L, 0x426e08eaa36c820eL, "freq");
     /*package*/ static final SProperty is_initial$KN7G = MetaAdapterFactory.getProperty(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x2ddcf9c555fc33d5L, 0x2ddcf9c555fce9c3L, "is_initial");
   }
@@ -89,6 +132,8 @@ public class App_TextGen extends TextGenDescriptorBase {
   private static final class LINKS {
     /*package*/ static final SContainmentLink actuators$$lkD = MetaAdapterFactory.getContainmentLink(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x2ddcf9c555fc33d7L, 0x2ddcf9c555fc33daL, "actuators");
     /*package*/ static final SContainmentLink sensors$xOD2 = MetaAdapterFactory.getContainmentLink(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x2ddcf9c555fc33d7L, 0x426e08eaa358c04dL, "sensors");
+    /*package*/ static final SContainmentLink errors$gebC = MetaAdapterFactory.getContainmentLink(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x2ddcf9c555fc33d7L, 0x13774564ebaf927cL, "errors");
+    /*package*/ static final SContainmentLink conditions$G2nx = MetaAdapterFactory.getContainmentLink(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x13774564ebaec09aL, 0x13774564ebaeca92L, "conditions");
     /*package*/ static final SContainmentLink states$$ljF = MetaAdapterFactory.getContainmentLink(0x36b21cb1227440d2L, 0x9f74baf372272c13L, 0x2ddcf9c555fc33d7L, 0x2ddcf9c555fc33d8L, "states");
   }
 }

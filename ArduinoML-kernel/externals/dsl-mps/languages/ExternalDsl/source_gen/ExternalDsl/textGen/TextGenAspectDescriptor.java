@@ -33,6 +33,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new App_TextGen();
       case LanguageConceptSwitch.Condition:
         return new Condition_TextGen();
+      case LanguageConceptSwitch.Error:
+        return new Error_TextGen();
       case LanguageConceptSwitch.Sensor:
         return new Sensor_TextGen();
       case LanguageConceptSwitch.State:

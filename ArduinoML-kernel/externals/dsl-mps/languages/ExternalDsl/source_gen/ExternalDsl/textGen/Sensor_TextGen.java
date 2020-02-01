@@ -16,7 +16,7 @@ public class Sensor_TextGen extends TextGenDescriptorBase {
     tgs.indent();
     tgs.append("pinMode(");
     tgs.append(String.valueOf(SPropertyOperations.getInteger(ctx.getPrimaryInput(), PROPS.pin$xOEV)));
-    tgs.append(", INPUT) //");
+    tgs.append(", INPUT); //");
     tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.name$tAp1));
     tgs.append(" [Sensor]");
     tgs.newLine();
