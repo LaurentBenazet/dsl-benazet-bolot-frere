@@ -1,0 +1,80 @@
+//Wiring code generated from an ArduinoML model
+//From the mps external dsl
+//Application name: scenario3-from-mps
+
+void setup(){
+  pinMode(9, OUTPUT); //led [Actuator]
+  pinMode(12, INPUT); //button [Sensor]
+}
+
+void error_handler(){
+}
+
+
+long time = 0;
+long defFreq = 200;
+
+void led_on(){
+  digitalWrite(9,HIGH);
+  long debounce = defFreq;
+  boolean guard = millis() - time > debounce;
+  if(guard) {
+    error_handler();
+    time = millis();
+  }
+  if( digitalRead(12) == HIGH && guard ) {
+    time = millis();
+    led_off_temp();
+  }
+  led_on();
+}
+
+void led_on_temp(){
+  digitalWrite(9,HIGH);
+  long debounce = defFreq;
+  boolean guard = millis() - time > debounce;
+  if(guard) {
+    error_handler();
+    time = millis();
+  }
+  if( digitalRead(12) == LOW && guard ) {
+    time = millis();
+    led_on();
+  }
+  led_on_temp();
+}
+
+void led_off(){
+  digitalWrite(9,LOW);
+  long debounce = defFreq;
+  boolean guard = millis() - time > debounce;
+  if(guard) {
+    error_handler();
+    time = millis();
+  }
+  if( digitalRead(12) == HIGH && guard ) {
+    time = millis();
+    led_on_temp();
+  }
+  led_off();
+}
+
+void led_off_temp(){
+  digitalWrite(9,LOW);
+  long debounce = defFreq;
+  boolean guard = millis() - time > debounce;
+  if(guard) {
+    error_handler();
+    time = millis();
+  }
+  if( digitalRead(12) == LOW && guard ) {
+    time = millis();
+    led_off();
+  }
+  led_off_temp();
+}
+
+
+void loop() {
+  led_off();
+}
