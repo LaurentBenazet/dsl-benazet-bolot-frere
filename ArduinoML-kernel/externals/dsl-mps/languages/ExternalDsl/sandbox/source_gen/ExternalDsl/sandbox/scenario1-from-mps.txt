@@ -1,0 +1,53 @@
+//Wiring code generated from an ArduinoML model
+//From the mps external dsl
+//Application name: scenario1-from-mps
+
+void setup(){
+  pinMode(9, OUTPUT); //led [Actuator]
+  pinMode(10, OUTPUT); //buzzer [Actuator]
+  pinMode(12, INPUT); //button [Sensor]
+}
+
+void error_handler(){
+}
+
+
+long time = 0;
+long defFreq = 200;
+
+void alarm_on(){
+  digitalWrite(9,HIGH);
+digitalWrite(10,HIGH);
+  long debounce = defFreq;
+  boolean guard = millis() - time > debounce;
+  if(guard) {
+    error_handler();
+    time = millis();
+  }
+  if( digitalRead(12) == LOW && guard ) {
+    time = millis();
+    alarm_off();
+  }
+  alarm_on();
+}
+
+void alarm_off(){
+  digitalWrite(9,LOW);
+digitalWrite(10,LOW);
+  long debounce = defFreq;
+  boolean guard = millis() - time > debounce;
+  if(guard) {
+    error_handler();
+    time = millis();
+  }
+  if( digitalRead(12) == HIGH && guard ) {
+    time = millis();
+    alarm_on();
+  }
+  alarm_off();
+}
+
+
+void loop() {
+  alarm_off();
+}
