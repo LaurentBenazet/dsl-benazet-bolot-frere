@@ -1,5 +1,6 @@
 target/
 .idea
+ArduinoML-kernel/externals/dsl-mps/.mps
 *.iml
 
 # Compiled class file
